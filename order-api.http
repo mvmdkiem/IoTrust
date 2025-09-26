@@ -1,0 +1,14 @@
+
+### Create Orders
+POST http://localhost:3000/orders
+Content-Type: application/json
+
+[
+  { "userId": 1, "productId": 101, "quantity": 2 },
+  { "userId": 1, "productId": 102, "quantity": 1 },
+  { "userId": 2, "productId": 201, "quantity": 3 }
+]
+
+###
+### Get Orders by User ID
+GET http://localhost:3000/orders?userId=1
