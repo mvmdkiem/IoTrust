@@ -1,11 +1,16 @@
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "sqlite" // 필요 시 postgresql 등으로 변경
   url      = "file:./orders.db"
+}
+
+model User {
+  id     Int     @id @default(autoincrement())
+  name   String  @unique
+  orders Order[]
 }
 
 model Order {
@@ -14,10 +19,6 @@ model Order {
   productId Int
   quantity  Int
   user      User   @relation(fields: [userId], references: [id])
-}
 
-model User {
-  id     Int     @id
-  name   String
-  orders Order[]
+  @@index([userId])
 }
